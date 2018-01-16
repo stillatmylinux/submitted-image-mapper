@@ -1,0 +1,11 @@
+sImgMap.recentMap.dataCallback({
+		"type":"FeatureCollection",
+		"metadata":{
+			"generated":1515267089000,"url":"https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.geojsonp","title":"USGS Magnitude 2.5+ Earthquakes, Past Week","status":200,"api":"1.5.8","count":250
+		},
+		"features":[
+			{"type":"Feature","properties":{"mag":5,"place":"193km SE of Sarangani, Philippines","time":1515263710840,"updated":1515264755040,"tz":480,"url":"https://earthquake.usgs.gov/earthquakes/eventpage/us1000c1hr","detail":"https://earthquake.usgs.gov/earthquakes/feed/v1.0/detail/us1000c1hr.geojsonp","felt":null,"cdi":null,"mmi":null,"alert":null,"status":"reviewed","tsunami":1,"sig":385,"net":"us","code":"1000c1hr","ids":",us1000c1hr,","sources":",us,","types":",geoserve,origin,phase-data,","nst":null,"dmin":3.089,"rms":0.9,"gap":92,"magType":"mb","type":"earthquake","title":"M 5.0 - 193km SE of Sarangani, Philippines"},"geometry":{"type":"Point","coordinates":[126.7037,4.1708,43.26]},"id":"us1000c1hr"},
+			{"type":"Feature","properties":{"mag":4.6,"place":"188km SSE of Taron, Papua New Guinea","time":1515262503520,"updated":1515266837040,"tz":600,"url":"https://earthquake.usgs.gov/earthquakes/eventpage/us1000c1hh","detail":"https://earthquake.usgs.gov/earthquakes/feed/v1.0/detail/us1000c1hh.geojsonp","felt":null,"cdi":null,"mmi":null,"alert":null,"status":"reviewed","tsunami":0,"sig":326,"net":"us","code":"1000c1hh","ids":",us1000c1hh,","sources":",us,","types":",geoserve,origin,phase-data,","nst":null,"dmin":2.365,"rms":0.84,"gap":149,"magType":"mb","type":"earthquake","title":"M 4.6 - 188km SSE of Taron, Papua New Guinea"},"geometry":{"type":"Point","coordinates":[153.6322,-6.0622,6.74]},"id":"us1000c1hh"}
+		],
+		"bbox":[-179.6805,-53.0266,0,178.7923,76.9531,587.51]
+});
