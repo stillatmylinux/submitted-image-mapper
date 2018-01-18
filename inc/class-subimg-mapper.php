@@ -47,7 +47,7 @@ class SubmittedImageMapper {
 				$postmeta = get_post_meta(get_the_ID());
 
 				if(isset($postmeta['lat'], $postmeta['lat'])) {
-					array_push($this->mapData, new MapData($postmeta, $custom_query->post->post_date));
+					array_push($this->mapData, new MapData($custom_query->post, $postmeta, $custom_query->post->post_date));
 				}
 
 			}

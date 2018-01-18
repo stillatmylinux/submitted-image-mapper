@@ -45,7 +45,7 @@
 
 			google.maps.event.addListener(marker, 'click', (function(marker, i) {
 				return function() {
-					infowindow.setContent(locations[i].description);
+					infowindow.setContent(locations[i].infowindowContent);
 					infowindow.setOptions({maxWidth: 200});
 					infowindow.open(map, marker);
 				}
