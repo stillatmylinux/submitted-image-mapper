@@ -30,4 +30,4 @@ Place this short code on the pages you created:
 **[sim-thankyou]** - Thank you page
 
 # AppPresser Custom JS
-AppPresser has a feature where you can add custom javascript to the builder on myapppresser.com.  You need to use this feature.  Log into your myapppresser.com account and navigate to the customizer and to the the settings tab and scroll down to the custom js field.  Now you need to upload the custom.js file to that field.  Locate the custom.js file in this plugin under the js/ folder, js/custom.js.
+AppPresser has a feature where you can add custom javascript to the builder on myapppresser.com.  You need to use this feature.  Log into your myapppresser.com account and navigate to the customizer and to the settings tab and scroll down to the custom js field.  Now you need to upload the custom.js file to that field.  Locate the custom.js file in this plugin located under the js/ folder, js/custom.js.
