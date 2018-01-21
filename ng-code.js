@@ -1,3 +1,6 @@
+
+// Required modification to AppPresser's AP3 code app-camera.ts
+
 uploadPhoto(camImage) {
 
     let imageURI = '';
