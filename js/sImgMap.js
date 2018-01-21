@@ -16,9 +16,59 @@
 			appcamera.upload = {
 				callback: sImgMap.uploadCallback
 			}
+			document.addEventListener('appgeo-checking', sImgMap.handle_checkin);
 		} else {
 			console.log('missing appcamera');
 		}
+	}
+	sImgMap.handle_checkin = function(event) {
+		console.log('sImgMap.handle_checkin detail', event, event.detail);
+		if(event.detail && event.detail.data && event.detail.data.post_id) {
+			var post_id = jQuery('#submitted-photo').data('postId');
+			var lat = event.detail.data.latitude;
+			var lng = event.detail.data.longitude;
+
+			console.log({
+				post_id: post_id,
+				lat: lat,
+				lng: lng
+			});
+
+			sImgMap.add_geolocation_post({
+				post_id: post_id,
+				lat: lat,
+				lng: lng
+			});
+		}
+	}
+	sImgMap.add_geolocation_post = function(data) {
+
+		data.action = 'sim_post_location';
+
+		jQuery.ajax({
+			type: 'POST',
+			url: apppCore.ajaxurl,
+			data: data,
+			success: function( response ){
+
+				try {
+					console.log('sImgMap.add_geolocation_post ajax response', response);
+					var event = new CustomEvent('sim-post-location', {detail:response});
+					window.document.dispatchEvent(event);
+				} catch (error) {
+					console.warn(error);
+				}
+
+				var redirect = jQuery('#submitted-photo-redirect').data('redirect');
+				if(redirect) {
+					window.location.href = redirect+'?appp=3&sim-attachment-id='+response.data.attachment_id;
+				}
+
+			},
+			error: function( error ) {
+				console.log('sImgMap.add_geolocation_post ajax error', error);
+			}
+		});
 	}
 	sImgMap.add_mapapi = function() {
 		var src = sImgMap.api.url+'callback=sImgMap.recentMap.callback&key='+sImgMap.api.key;

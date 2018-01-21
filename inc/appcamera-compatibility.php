@@ -26,6 +26,7 @@ class SIM_AppCamera_Compatibility {
 				'attachment_id'  => $attachment_id
 			));
 		} else {
+			update_post_meta( $post_id, 'attachment_id', $attachment_id );
 			wp_send_json_success(array(
 				'location' => false,
 				'post_id'  => $post_id,

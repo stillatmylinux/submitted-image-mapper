@@ -36,6 +36,7 @@ if ( ! class_exists( 'SubmittedImageMapper' ) ) {
 	include_once dirname( __FILE__ ) . '/inc/class-subimg-mapper.php';
 	include_once dirname( __FILE__ ) . '/inc/class-img-geolocation.php';
 	include_once dirname( __FILE__ ) . '/inc/appcamera-compatibility.php';
+	include_once dirname( __FILE__ ) . '/inc/appgeo-compatibility.php';
 	include_once dirname( __FILE__ ) . '/inc/class-cpt.php';
 	include_once dirname( __FILE__ ) . '/inc/class-shortcodes.php';
 
@@ -45,6 +46,9 @@ if ( ! class_exists( 'SubmittedImageMapper' ) ) {
 
 	$sim_AppCamera_Compatibility = new SIM_AppCamera_Compatibility();
 	$sim_AppCamera_Compatibility->hooks();
+
+	$sim_AppGeo_Compatibility = new SIM_AppGeo_Compatibility();
+	$sim_AppGeo_Compatibility->hooks();
 
 	$sim_SubmittedPhoto_CPT = new SIM_SubmittedPhoto_CPT();
 	$sim_SubmittedPhoto_CPT->hooks();
