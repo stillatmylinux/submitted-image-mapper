@@ -43,6 +43,11 @@ $jsPhotoList = ($photoList) ? json_encode($photoList) : '{}';
 <?php $photoList = array_reverse($photoList); ?>
 <?php foreach($photoList as $photo) : ?>
 	<h2 style="color:<?php echo $photo->color ?>"><?php echo $photo->getPost()->post_title ?></h2>
+	<p>
+		Name: <?php echo $photo->name ?><br>
+		Location: <?php echo $photo->location ?><br>
+		Description: <?php echo $photo->description ?><br>
+	</p>
 	<p><img style="max-height:100px;" src="<?php echo $photo->image ?>"></p>
 <?php endforeach;?>
 </div>
