@@ -10,15 +10,21 @@ Activate the WordPress plugin and go to the settings page located under the AppP
 # Pages
 You need to create these four pages in your WordPress site:
 
-Thank you - This page will display the photo uploaded
-Drop marker page - This page will display a utility to allow users to added the location of the photo in cases where the geolocation was not available on the photo.
-Recent Map - This page displays a Google map with markers of the photos submitted in the last three hours.
-Archive Map - This page diaplay a Google map with markers of the photos submitted in the last three months.
+*Thank you* - This page will display the photo uploaded
+
+*Drop marker page* - This page will display a utility to allow users to added the location of the photo in cases where the geolocation was not available on the photo.
+
+*Recent Map* - This page displays a Google map with markers of the photos submitted in the last three hours.
+
+*Archive Map* - This page diaplay a Google map with markers of the photos submitted in the last three months.
 
 # Shortcodes
 Place this short code on the pages you created:
 
 [mapper-recent] - Recent Map page
+
 [sim-need-location-map] - Drop marker page
+
 [mapper-archive] - Archive Map page
+
 [sim-thankyou] - Thank you page
