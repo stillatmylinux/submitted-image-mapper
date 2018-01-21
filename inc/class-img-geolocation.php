@@ -6,43 +6,7 @@ function sim_map_center_lat() {
 
 function sim_map_center_lng() {
     echo get_option('sim-map-center-lng');
-}
-
-function test_geo_pics() {
-    $pic = ABSPATH . '/wp-content/uploads/2018/01/155323undefined.jpg';
-    $pic = ABSPATH . '/wp-content/uploads/2018/01/1603551515276235167.jpg';
-    $pic = ABSPATH . '/wp-content/uploads/2018/01/1612201515276740014.jpg';
-    $pic = ABSPATH . '/wp-content/uploads/2016/05/1463682443193.jpg';
-    $pic = ABSPATH . '/wp-content/uploads/2018/01/2146351515469595262.jpg';
-    // $pic = 'wp-content/uploads/2016/05/1463682443193.jpg';
-    // $pic = 'wp-content/uploads/2016/09/1473361700-cdv_photo_004.jpg';
-    // $pic = 'wp-content/uploads/2016/01/14456514951051445651495.jpg';
-    // $pic = '/Users/matt/Desktop/1456561489528616719.jpg';
-    
-
-    @var_dump(get_image_location($pic));
-
-    // @$exif = exif_read_data($pic, 'IFD0');
-    // echo $exif===false ? "No header data found.<br />\n" : "Image contains headers<br />\n";
-    
-    // @$exif = exif_read_data($pic, 0, true);
-    
-    // var_dump($exif['GPS']);
-    
-    // echo "$pic<br />\n";
-    // foreach ($exif as $key => $section) {
-    //     foreach ($section as $name => $val) {
-    //         echo "$key.$name: $val<br />\n";
-    //     }
-    // }
-    
-    // echo '<hr>';
-    // var_dump(get_image_location($pic));
-
-}
-
-// test_geo_pics();
-  
+}  
 
 function get_image_location($file) {
     if (is_file($file)) {
