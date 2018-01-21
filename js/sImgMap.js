@@ -10,6 +10,16 @@
 			key: ''
 		}
 	};
+	sImgMap.init = function() {
+		if(appcamera) {
+			console.log('we found the appcamera.js');
+			appcamera.upload = {
+				callback: sImgMap.uploadCallback
+			}
+		} else {
+			console.log('missing appcamera');
+		}
+	}
 	sImgMap.add_mapapi = function() {
 		var src = sImgMap.api.url+'callback=sImgMap.recentMap.callback&key='+sImgMap.api.key;
 		var s = document.createElement('script');
@@ -58,7 +68,21 @@
 		map.fitBounds(bounds);       // auto-zoom
 		map.panToBounds(bounds);     // auto-center
 	}
+	sImgMap.uploadCallback = function(uploadResponse) {
+		console.log('sImgMap.uploadCallback uploadResponse', uploadResponse);
+		let resp = uploadResponse;
+		if(resp && resp.indexOf('{') === 0) {
+			let json = JSON.parse(resp);
+			if(json && json.success && json.data && json.data.location === false) {
+				needLocation = true;
+				window.location.href = 'http://home.thiessen.us/mark-location-map/?sim-post-id='+json.data.post_id+'&appp=3';
+			} else {
+				window.location.href = 'http://home.thiessen.us/thank-you/?sim-attachment-id='+json.data.attachment_id+'&appp=3';
+			}
+		}
+	}
 
 	window.sImgMap = sImgMap;
+	sImgMap.init();
 
 })();

@@ -25,11 +25,20 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 // Include the main class.
 if ( ! class_exists( 'SubmittedImageMapper' ) ) {
+	
+	if(is_admin()) {
+		include_once dirname( __FILE__ ) . '/inc/class-admin-page.php';
+		$simAdminPage = new SimAdminPage();
+		$simAdminPage->hooks();
+	}
+
 	include_once dirname( __FILE__ ) . '/inc/template-parts.php';
 	include_once dirname( __FILE__ ) . '/inc/class-subimg-mapper.php';
 	include_once dirname( __FILE__ ) . '/inc/class-img-geolocation.php';
 	include_once dirname( __FILE__ ) . '/inc/appcamera-compatibility.php';
 	include_once dirname( __FILE__ ) . '/inc/class-cpt.php';
+	include_once dirname( __FILE__ ) . '/inc/class-shortcodes.php';
+
 
 	$submittedImageMapper = new SubmittedImageMapper();
 	$submittedImageMapper->hooks();
@@ -39,4 +48,7 @@ if ( ! class_exists( 'SubmittedImageMapper' ) ) {
 
 	$sim_SubmittedPhoto_CPT = new SIM_SubmittedPhoto_CPT();
 	$sim_SubmittedPhoto_CPT->hooks();
+
+	$sim_Shortcodes = new SimShortcodes();
+	$sim_Shortcodes->hooks();
 }

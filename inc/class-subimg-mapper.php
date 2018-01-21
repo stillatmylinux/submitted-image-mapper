@@ -7,9 +7,7 @@ use SIM\MapData;
 class SubmittedImageMapper {
 
 	public $mapData = array();
-
-	// @TODO - add admin field
-	public static $GOOGLE_API_KEY = 'AIzaSyC1ZEyO2ms9dTBniGbD3HYUIujfaxOENvQ';
+	public $google_api;
 
 	public function hooks() {
 		add_action('wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
@@ -31,6 +29,14 @@ class SubmittedImageMapper {
 		ob_start();
 		simgmap_get_template_part('map', 'recent');
 		return ob_get_clean();
+	}
+
+	public function getGoogleApi() {
+		if(is_null($this->google_api)) {
+			$this->google_api = get_option('sim-google-api');
+		}
+
+		return $this->google_api;
 	}
 
 	public function getPhotoList( $post_type = 'submitted-pic' ) {

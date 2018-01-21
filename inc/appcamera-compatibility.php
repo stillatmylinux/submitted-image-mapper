@@ -18,6 +18,19 @@ class SIM_AppCamera_Compatibility {
 			update_post_meta( $post_id, 'lat', $location['lat'] );
 			update_post_meta( $post_id, 'lng', $location['lng'] );
 			update_post_meta( $post_id, 'attachment_id', $attachment_id );
+			wp_send_json_success(array(
+				'location' => true,
+				'lat' => $location['lat'],
+				'lng' => $location['lng'],
+				'post_id'  => $post_id,
+				'attachment_id'  => $attachment_id
+			));
+		} else {
+			wp_send_json_success(array(
+				'location' => false,
+				'post_id'  => $post_id,
+				'attachment_id'  => $attachment_id
+			));
 		}
 	}
 

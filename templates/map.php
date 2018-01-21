@@ -13,7 +13,7 @@ $jsPhotoList = ($photoList) ? json_encode($photoList) : '{}';
 <script>
 	
 	// Config
-	sImgMap.api.key = '<?php echo SubmittedImageMapper::$GOOGLE_API_KEY ?>';
+	sImgMap.api.key = '<?php echo $subimgMapper->getGoogleApi() ?>';
 	sImgMap.recentMap.callback = sImgMap.recentMap.init;
 	sImgMap.recentMap.domSelectorId = 'map-recent';
 
