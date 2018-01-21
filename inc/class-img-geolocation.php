@@ -1,5 +1,13 @@
 <?php
 
+function sim_map_center_lat() {
+    echo get_option('sim-map-center-lat');
+}
+
+function sim_map_center_lng() {
+    echo get_option('sim-map-center-lng');
+}
+
 function test_geo_pics() {
     $pic = ABSPATH . '/wp-content/uploads/2018/01/155323undefined.jpg';
     $pic = ABSPATH . '/wp-content/uploads/2018/01/1603551515276235167.jpg';

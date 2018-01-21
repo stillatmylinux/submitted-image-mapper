@@ -16,9 +16,13 @@ class SimAdminPage {
 			update_option('sim-thankyou-page', $_POST['sim-thankyou-page']);
 			update_option('sim-drop-marker-page', $_POST['sim-drop-marker-page']);
 			update_option('sim-google-api', $_POST['sim-google-api']);
+			update_option('sim-map-center-lat', $_POST['sim-map-center-lat']);
+			update_option('sim-map-center-lng', $_POST['sim-map-center-lng']);
 		}
 
 		$sim_google_api = get_option('sim-google-api');
+		$sim_map_center_lat = get_option('sim-map-center-lat');
+		$sim_map_center_lng = get_option('sim-map-center-lng');
 		
 		?>
 		<form action="<?php echo esc_url( admin_url( 'admin.php?page=sim-settings' ) ); ?>" method="post" dir="ltr">
@@ -45,10 +49,25 @@ class SimAdminPage {
 			$this->page_dropdown( 'sim-drop-marker-page' );
 
 			?>Drop marker page</label>
+
+			<h3>Map Center</h3>
+			<label for="sim-map-center-lat">
+				<input type="text" class="regular-text" name="sim-map-center-lat" value="<?php echo $sim_map_center_lat ?>"> Latitude
+			</label><br>
+			<label for="sim-map-center-lng">
+				<input type="text" class="regular-text" name="sim-map-center-lng" value="<?php echo $sim_map_center_lng ?>"> Longitude
+			</label>
+
 			</div>
 
 			<p><input type="submit" class="button-primary" value="Save Settings"></p>
 		</form>
+
+		<hr>
+
+		<h3>Shortcodes</h3>
+			<p>[mapper-recent]</p>
+			<p>[mapper-archive]</p>
 		<?php
 	}
 
