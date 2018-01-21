@@ -9,5 +9,6 @@
 		?>
 		<p>Credit: <?php echo $data->name ?><br>
 		(<?php echo $data->getDate() ?>).</p>
+		<?php if(current_user_can('edit_posts')) edit_post_link('Edit', '', '', $data->getPost()->ID); ?>
 	</div>
 </div>
