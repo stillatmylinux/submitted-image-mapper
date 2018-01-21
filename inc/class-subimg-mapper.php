@@ -12,6 +12,7 @@ class SubmittedImageMapper {
 	public function hooks() {
 		add_action('wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 		add_shortcode( 'mapper-recent', array( $this, 'mapper_shortcode' ) );
+		add_shortcode( 'mapper-archive', array( $this, 'mapper_shortcode_archive' ) );
 	}
 
 	public function enqueue_scripts() {
@@ -31,6 +32,12 @@ class SubmittedImageMapper {
 		return ob_get_clean();
 	}
 
+	public function mapper_shortcode_archive() {
+		ob_start();
+		simgmap_get_template_part('map', 'archive');
+		return ob_get_clean();
+	}
+
 	public function getGoogleApi() {
 		if(is_null($this->google_api)) {
 			$this->google_api = get_option('sim-google-api');
@@ -39,11 +46,20 @@ class SubmittedImageMapper {
 		return $this->google_api;
 	}
 
-	public function getPhotoList( $post_type = 'submitted-pic' ) {
+	public function getPhotoList( $post_type = 'submitted-pic', $timeframe = array() ) {
+
 		$query_args = array(
 			'post_type' => $post_type,
-			'posts_per_page' => -1
+			'posts_per_page' => -1,
+			'orderby' => 'date',
+			'order'   => 'ASC',
 		);
+
+		if(!empty($timeframe)) {
+			$query_args['date_query'] = array(
+				$timeframe
+			);
+		}
 
 		$custom_query = new WP_Query( $query_args );
 

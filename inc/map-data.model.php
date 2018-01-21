@@ -3,6 +3,14 @@
 namespace SIM;
 
 class MapData {
+
+	private $months_3 = (60 * 60 * 24 * 30 * 3);
+	private $months_2 = (60 * 60 * 24 * 30 * 2);
+	private $months_1 = (60 * 60 * 24 * 30);
+	private $minutes_15 = (60 * 15);
+	private $minutes_60 = (60 * 60);
+	private $hours_3    = (60 * 60 * 3);
+
 	private $post;
 	private $postmeta;
 	public $lat;
@@ -14,6 +22,7 @@ class MapData {
 	public $date;
 	public $status;
 	public $infowindowContent;
+	public $color;
 
 	public function __construct( $post, $postmeta, $date ) {
 		$this->post = $post;
@@ -25,12 +34,52 @@ class MapData {
 		$this->name = (isset($postmeta['name'])) ? $postmeta['name'][0] : '';
 		$this->status = (isset($postmeta['status'])) ? $postmeta['status'][0] : 'publish';
 		$this->date = $date;
+		$this->setMarkerColor();
 		$this->setImage();
 		$this->setInfowindowContent($post, $postmeta);
 	}
 
+	public function getPost() {
+		return $this->post;
+	}
+
+	public function getPostmeta() {
+		return $this->postmeta;
+	}
+
 	public function getDate() {
 		return date('M j, Y g:i a', strtotime($this->date));
+	}
+
+	public function setMarkerColor() {
+
+		if(has_action('sim_set_marker_color')) {
+			$this->color = apply_filters('sim_set_marker_color', $this);
+		} else {
+			$wordpress_timezone = get_option('timezone_string');
+	
+			$date = new \DateTime($this->date, new \DateTimeZone($wordpress_timezone));
+			$now = new \DateTime(null, new \DateTimeZone($wordpress_timezone));
+			
+			$date = strtotime($date->format('Y-m-d H:i:s'));
+			$now  = strtotime($now->format('Y-m-d H:i:s'));
+	
+			$diff = $now - $date;
+	
+			if($diff <= $this->minutes_15)
+				$this->color = 'red';
+			else if($diff <= $this->minutes_60)
+				$this->color = 'orange';
+			else if($diff <= $this->hours_3)
+				$this->color = 'yellow';
+			else if($diff <= $this->months_1)
+				$this->color = 'green';
+			else if($diff <= $this->months_2)
+				$this->color = 'blue';
+			else if($diff <= $this->months_3)
+				$this->color = 'purple';
+		}
+
 	}
 
 	private function setInfowindowContent($post, $postmeta) {

@@ -35,6 +35,38 @@
 		script.src = url;
 		document.getElementsByTagName('head')[0].appendChild(script);
 	}
+	sImgMap.getIconColor = function(color) {
+		/*
+		Blue: blue-dot.png
+		Red: red-dot.png
+		Purple: purple-dot.png
+		Yellow: yellow-dot.png
+		Green: green-dot.png
+		*/
+
+		switch(color) {
+			case 'blue':
+				png = 'blue-dot.png';
+				break;
+			case 'red':
+				png = 'red-dot.png';
+				break;
+			case 'purple':
+				png = 'purple-dot.png';
+				break;
+			case 'yellow':
+				png = 'yellow-dot.png';
+				break;
+			case 'green':
+				png = 'green-dot.png';
+				break;
+			default:
+				png = 'blue-dot.png';
+				break;
+		}
+
+		return 'http://maps.google.com/mapfiles/ms/icons/'+png;
+	}
 	sImgMap.recentMap.addLocations = function() {
 		var bounds = new google.maps.LatLngBounds();
 		var map = new google.maps.Map(document.getElementById(sImgMap.recentMap.domSelectorId), {
@@ -51,6 +83,7 @@
 			var marker = new google.maps.Marker({
 				position: position,
 				map: map,
+				icon: sImgMap.getIconColor(locations[i].color)
 			});
 
 			google.maps.event.addListener(marker, 'click', (function(marker, i) {
