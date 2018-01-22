@@ -16,7 +16,7 @@
 			appcamera.upload = {
 				callback: sImgMap.uploadCallback
 			}
-			document.addEventListener('appgeo-checking', sImgMap.handle_checkin);
+			document.addEventListener('appgeo-checkin', sImgMap.handle_checkin);
 		} else {
 			console.log('missing appcamera');
 		}
