@@ -3,7 +3,7 @@
  * Plugin Name: Submitted Image Mapper
  * Plugin URI: https://stillatmylinux.com/
  * Description: A submitted image mapper
- * Version: 0.1.0
+ * Version: 0.1.1
  * Author: Stillatmylinux
  * Author URI: https://stillatmylinux.com
  * Requires at least: 4.4
