@@ -158,9 +158,13 @@
 			let json = JSON.parse(resp);
 			if(json && json.success && json.data && json.data.location === false) {
 				needLocation = true;
-				window.location.href = 'http://home.thiessen.us/mark-location-map/?sim-post-id='+json.data.post_id+'&appp=3';
+				if(simgmapUrls && simgmapUrls.dropMarkerPage) {
+					window.location.href = dropMarkerPage+'?sim-post-id='+json.data.post_id+'&appp=3';
+				}
 			} else {
-				window.location.href = 'http://home.thiessen.us/thank-you/?sim-attachment-id='+json.data.attachment_id+'&appp=3';
+				if(simgmapUrls && simgmapUrls.thankyouPage) {
+					window.location.href = simgmapUrls.thankyouPage+'?sim-attachment-id='+json.data.attachment_id+'&appp=3';
+				}
 			}
 		}
 	}

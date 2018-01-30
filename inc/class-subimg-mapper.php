@@ -24,6 +24,23 @@ class SubmittedImageMapper {
 		wp_enqueue_script( 'simgmap', plugins_url( 'js/sImgMap.js', dirname( __FILE__ ) ), array(), $js_ver );
 		wp_register_style( 'simgstyle',    plugins_url( 'css/styles.css',    dirname( __FILE__ ) ), false,   $css_ver );
 		wp_enqueue_style ( 'simgstyle' );
+
+		$drop_marker_page_id = get_option('sim-drop-marker-page');
+		$drop_marker_page_url = '';
+		if( $drop_marker_page_id ) {
+			$drop_marker_page_url = get_permalink($drop_marker_page_id);
+		}
+
+		$thankyou_page_id = get_option('sim-drop-marker-page');
+		$thankyou_page_url = '';
+		if( $thankyou_page_id ) {
+			$thankyou_page_url = get_permalink($thankyou_page_id);
+		}
+
+		wp_localize_script( 'simgmap', 'simgmapUrls', array(
+			'dropMarkerPage' => $drop_marker_page_url,
+			'thankyouPage'   => $thankyou_page_url,
+		) );
 	}
 
 	public function mapper_shortcode() {
