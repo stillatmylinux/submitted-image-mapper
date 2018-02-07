@@ -159,7 +159,7 @@
 			if(json && json.success && json.data && json.data.location === false) {
 				needLocation = true;
 				if(simgmapUrls && simgmapUrls.dropMarkerPage) {
-					window.location.href = dropMarkerPage+'?sim-post-id='+json.data.post_id+'&appp=3';
+					window.location.href = simgmapUrls.dropMarkerPage+'?sim-post-id='+json.data.post_id+'&appp=3';
 				}
 			} else {
 				if(simgmapUrls && simgmapUrls.thankyouPage) {

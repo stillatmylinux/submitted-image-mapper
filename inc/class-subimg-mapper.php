@@ -31,7 +31,7 @@ class SubmittedImageMapper {
 			$drop_marker_page_url = get_permalink($drop_marker_page_id);
 		}
 
-		$thankyou_page_id = get_option('sim-drop-marker-page');
+		$thankyou_page_id = get_option('sim-thankyou-page');
 		$thankyou_page_url = '';
 		if( $thankyou_page_id ) {
 			$thankyou_page_url = get_permalink($thankyou_page_id);
