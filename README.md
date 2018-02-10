@@ -46,11 +46,11 @@ https://myapppresser.com/{{YOUR-SUBSITE}}/apps/{{YOUR-APP}}/#settings
 3. Open config.xml
 4. Find this line:
 
-<plugin name="cordova-plugin-camera" source="npm" spec="2.3.1">
+&lt;plugin name="cordova-plugin-camera" source="npm" spec="2.3.1"&gt;
 
 5. Replace it with this line:
 
-<plugin name="cordova-plugin-camera-with-exif" source="npm">
+&lt;plugin name="cordova-plugin-camera-with-exif" source="npm"&gt;
 
 6. Save the file
 7. Zip the app files again
