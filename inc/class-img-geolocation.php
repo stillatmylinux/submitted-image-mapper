@@ -1,5 +1,10 @@
 <?php
 
+function sim_map_center_zoom() {
+    $zoom = get_option('sim-map-center-zoom');
+    echo ($zoom) ? $zoom : 0;
+}
+
 function sim_map_center_lat() {
     echo get_option('sim-map-center-lat');
 }

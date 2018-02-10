@@ -148,7 +148,9 @@
 
 		bounds.extend(sImgMap.recentMap.myLatLng);
 
-		map.fitBounds(bounds);       // auto-zoom
+		if( sImgMap.recentMap.zoom === 0) {
+			map.fitBounds(bounds);       // auto-zoom
+		}
 		map.panToBounds(bounds);     // auto-center
 	}
 	sImgMap.uploadCallback = function(uploadResponse) {

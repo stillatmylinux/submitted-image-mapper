@@ -12,17 +12,19 @@ class SimAdminPage {
 
 	public function setting_page() {
 
-		if(isset($_POST['sim-thankyou-page'], $_POST['sim-drop-marker-page'], $_POST['sim-google-api'])) {
+		if(isset($_POST['sim-thankyou-page'], $_POST['sim-drop-marker-page'], $_POST['sim-google-api'], $_POST['sim-map-center-zoom'])) {
 			update_option('sim-thankyou-page', $_POST['sim-thankyou-page']);
 			update_option('sim-drop-marker-page', $_POST['sim-drop-marker-page']);
 			update_option('sim-google-api', $_POST['sim-google-api']);
 			update_option('sim-map-center-lat', $_POST['sim-map-center-lat']);
 			update_option('sim-map-center-lng', $_POST['sim-map-center-lng']);
+			update_option('sim-map-center-zoom', $_POST['sim-map-center-zoom']);
 		}
 
 		$sim_google_api = get_option('sim-google-api');
 		$sim_map_center_lat = get_option('sim-map-center-lat');
 		$sim_map_center_lng = get_option('sim-map-center-lng');
+		$sim_map_center_zoom = get_option('sim-map-center-zoom');
 		
 		?>
 		<form action="<?php echo esc_url( admin_url( 'admin.php?page=sim-settings' ) ); ?>" method="post" dir="ltr">
@@ -57,6 +59,24 @@ class SimAdminPage {
 			<label for="sim-map-center-lng">
 				<input type="text" class="regular-text" name="sim-map-center-lng" value="<?php echo $sim_map_center_lng ?>"> Longitude
 			</label>
+
+			<h3>Map Zoom Level</h3>
+			<label for="sim-map-center-zoom">
+				<?php 
+					$zoom_labels = array_fill(0 ,21, '');
+					$zoom_labels[0] = ' Auto zoom';
+					$zoom_labels[1] = ' World';
+					$zoom_labels[5] = ' Continent';
+					$zoom_labels[10] = ' City';
+					$zoom_labels[15] = ' Streets';
+					$zoom_labels[20] = ' Buildings';
+				?>
+				<select name="sim-map-center-zoom">
+					<?php for($i=0;$i<=20;$i++) : ?>
+					<option value="<?php echo $i ?>" <?php selected( $sim_map_center_zoom, $i ); ?>><?php echo $i . $zoom_labels[$i] ?></option>
+					<?php endfor; ?>
+				</select> Zoom
+			</label><br>
 
 			</div>
 

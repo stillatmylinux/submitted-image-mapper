@@ -26,7 +26,7 @@ $jsPhotoList = ($photoList) ? json_encode($photoList) : '{}';
 	// init
 	sImgMap.recentMap.init = function() {
 		sImgMap.recentMap.myLatLng = {lat: <?php sim_map_center_lat() ?>, lng: <?php sim_map_center_lng() ?>};
-		sImgMap.recentMap.zoom = 7;
+		sImgMap.recentMap.zoom = <?php sim_map_center_zoom() ?>;
 		sImgMap.recentMap.locations = <?php echo $jsPhotoList ?>;
 		sImgMap.recentMap.addLocations();
 	}
