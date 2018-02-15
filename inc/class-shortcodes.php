@@ -12,7 +12,7 @@ class SimShortcodes {
 		return ob_get_clean();
 	}
 
-	public function need_location_map() {
+	public function need_location_map( $atts ) {
 		ob_start();
 		simgmap_get_template_part( 'upload', 'mark-location' );
 		return ob_get_clean();

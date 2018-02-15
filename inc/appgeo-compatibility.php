@@ -4,6 +4,7 @@ class SIM_AppGeo_Compatibility {
 
 	public function hooks() {
 		add_filter( 'wp_ajax_sim_post_location', array( $this, 'add_checkin_geolocation' ) );
+		add_filter( 'wp_ajax_nopriv_sim_post_location', array( $this, 'add_checkin_geolocation' ) );
 	}
 
 	public function add_checkin_geolocation() {
