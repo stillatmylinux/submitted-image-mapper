@@ -11,7 +11,7 @@
 		}
 	};
 	sImgMap.init = function() {
-		if(appcamera) {
+		if(typeof appcamera !== 'undefined') {
 			console.log('we found the appcamera.js');
 			appcamera.upload = {
 				callback: sImgMap.uploadCallback
